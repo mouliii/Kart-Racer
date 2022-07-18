@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://mjulh6uhtyjb"]
+
+[ext_resource type="Texture2D" uid="uid://c7bfbghbpoai6" path="res://textures/1x1pixel.png" id="1_bldig"]
+[ext_resource type="Script" path="res://scenes/gui/SpeedMeter.gd" id="1_bpip0"]
+
+[node name="BoostMeter" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_bpip0")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchor_left = 0.74
+anchor_top = 0.823
+anchor_right = 0.927
+anchor_bottom = 0.89
+offset_left = 0.23999
+offset_top = 0.199982
+offset_right = -0.248047
+rounded = true
+nine_patch_stretch = true
+texture_under = ExtResource("1_bldig")
+texture_progress = ExtResource("1_bldig")
+tint_under = Color(0.196078, 0.196078, 0.196078, 1)
+tint_progress = Color(1, 0, 0.0156863, 1)
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true

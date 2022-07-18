@@ -1,0 +1,152 @@
+[gd_scene load_steps=13 format=3 uid="uid://4fetis5hsgln"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_nhj4q"]
+[ext_resource type="PackedScene" uid="uid://dfgagtwky5v2i" path="res://scenes/character/Player.tscn" id="2_s1lhp"]
+[ext_resource type="PackedScene" uid="uid://bxugxnhw14adw" path="res://scenes/camera/CameraBase.tscn" id="3_htb7p"]
+[ext_resource type="Environment" uid="uid://b5ystssbeu18j" path="res://scenes/main/environment.tres" id="4_pqcr7"]
+[ext_resource type="PackedScene" uid="uid://mjulh6uhtyjb" path="res://scenes/gui/SpeedMeter.tscn" id="5_b4hx5"]
+[ext_resource type="PackedScene" uid="uid://noaf7nref0jh" path="res://scenes/level/cp.tscn" id="6_3w2ed"]
+[ext_resource type="PackedScene" uid="uid://3bav853xr1ne" path="res://scenes/objects/boostpad.tscn" id="6_d4pcb"]
+[ext_resource type="PackedScene" uid="uid://d37c1klhpxdv2" path="res://scenes/gui/lap.tscn" id="6_pahar"]
+[ext_resource type="PackedScene" uid="uid://bsp7re6t5ufqn" path="res://scenes/gui/timer.tscn" id="7_ryqvg"]
+[ext_resource type="PackedScene" uid="uid://b88583dubmfoi" path="res://scenes/gui/Intro.tscn" id="8_8bbjw"]
+[ext_resource type="PackedScene" uid="uid://dpomw0cy27wf3" path="res://scenes/objects/CheckPoint.tscn" id="8_sicca"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbiw7"]
+size = Vector3(1, 27.1113, 60.7114)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_nhj4q")
+
+[node name="Player" parent="." instance=ExtResource("2_s1lhp")]
+transform = Transform3D(-0.0532772, 0, -0.99858, 0, 1, 0, 0.99858, 0, -0.0532772, -1.65072, 6.73705, 85.9888)
+
+[node name="CollisionShape3D" parent="Player" index="0"]
+transform = Transform3D(-4.37722e-08, 0, 1, 0, 1, 0, -1, 0, -4.37722e-08, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="CameraTarget" parent="Player" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.250262, 0.968178, 0, -0.968178, 0.250262, 0, 80.6505, 18.8605)
+shadow_enabled = true
+shadow_bias = 0.2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_pqcr7")
+
+[node name="CameraBase" parent="." node_paths=PackedStringArray("camTarget") instance=ExtResource("3_htb7p")]
+camTarget = NodePath("../Player/CameraTarget")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BoostMeter" parent="CanvasLayer" instance=ExtResource("5_b4hx5")]
+
+[node name="Lap" parent="CanvasLayer" instance=ExtResource("6_pahar")]
+
+[node name="Timer" parent="CanvasLayer" instance=ExtResource("7_ryqvg")]
+
+[node name="Intro" parent="CanvasLayer" instance=ExtResource("8_8bbjw")]
+
+[node name="HiddenCratesCounter" type="Control" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="leveli" parent="." instance=ExtResource("6_3w2ed")]
+
+[node name="CollisionShape3D" parent="leveli/Rata_ver1/StaticBody3D" index="0"]
+visible = false
+
+[node name="CollisionShape3D" parent="leveli/maa1/StaticBody3D" index="0"]
+visible = false
+
+[node name="Node" type="Node" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 0.464348, 0.885653, 0, -0.885653, 0.464348, 22.1066, 35.2189, -50.4665)
+light_color = Color(1, 0.980392, 0.611765, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 344.52
+spot_attenuation = 0.297302
+spot_angle = 47.9425
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 0.464348, 0.885653, 0, -0.885653, 0.464348, -61.217, 32.9512, -50.4665)
+light_color = Color(1, 0.980392, 0.611765, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 336.074
+spot_attenuation = 0.353553
+spot_angle = 47.463
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Boostpad" parent="Node3D" instance=ExtResource("6_d4pcb")]
+transform = Transform3D(0.941494, 0, -0.33703, 0, 1, 0, 0.33703, 0, 0.941494, 123.562, 3.12875, 42.365)
+
+[node name="Boostpad2" parent="Node3D" instance=ExtResource("6_d4pcb")]
+transform = Transform3D(0.175332, 0, 0.984509, 0, 1, 0, -0.984509, 0, 0.175332, 142.393, 3.70894, -74.8451)
+
+[node name="Boostpad3" parent="Node3D" instance=ExtResource("6_d4pcb")]
+transform = Transform3D(-0.856221, 0.0229017, -0.516103, 0.0768151, 0.993555, -0.0833488, 0.510867, -0.111009, -0.852462, -190.67, 4.03308, -20.2003)
+
+[node name="Time" type="Node3D" parent="."]
+
+[node name="0" type="Area3D" parent="Time"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2113, 0, 92.6582)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Time/0"]
+shape = SubResource("BoxShape3D_qbiw7")
+
+[node name="5" type="Area3D" parent="Time"]
+transform = Transform3D(0.750934, -0.00241167, -0.660373, 0.0160472, 0.999765, 0.0145967, 0.660183, -0.0215583, 0.750796, -114.161, 10.872, 77.4408)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Time/5"]
+shape = SubResource("BoxShape3D_qbiw7")
+
+[node name="4" type="Area3D" parent="Time"]
+transform = Transform3D(0.575325, -0.00241167, -0.817921, 0.0190202, 0.999765, 0.010431, 0.817704, -0.0215583, 0.575235, -182.182, 12.7469, -25.5875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Time/4"]
+shape = SubResource("BoxShape3D_qbiw7")
+
+[node name="3" type="Area3D" parent="Time"]
+transform = Transform3D(0.994558, -0.00241167, -0.104155, 0.00464341, 0.999765, 0.0211899, 0.104079, -0.0215583, 0.994335, -98.4209, 9.82942, -80.1221)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Time/3"]
+transform = Transform3D(1, -1.39698e-09, 0, 2.32831e-10, 1, 1.86265e-09, -1.49012e-08, 0, 1, -0.0117722, -2.53464, -0.0537186)
+shape = SubResource("BoxShape3D_qbiw7")
+
+[node name="2" type="Area3D" parent="Time"]
+transform = Transform3D(0.993801, -0.00241167, 0.111148, 0, 0.999765, 0.0216927, -0.111174, -0.0215583, 0.993567, 97.7657, 15.9384, -81.8526)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Time/2"]
+shape = SubResource("BoxShape3D_qbiw7")
+
+[node name="1" type="Area3D" parent="Time"]
+transform = Transform3D(0.4616, -0.00241167, 0.887085, -0.0180111, 0.999765, 0.0120902, -0.886905, -0.0215583, 0.461448, 146.454, 9.40565, 16.6993)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Time/1"]
+shape = SubResource("BoxShape3D_qbiw7")
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.9706, 3.0297, 77.7812)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="CheckPoint" parent="Checkpoints" instance=ExtResource("8_sicca")]
+
+[node name="CheckPoint2" parent="Checkpoints" instance=ExtResource("8_sicca")]
+transform = Transform3D(0.459053, 0, 0.888409, 0, 1, 0, -0.888409, 0, 0.459053, 145.703, 10.0744, 16.1364)
+
+[node name="CheckPoint3" parent="Checkpoints" instance=ExtResource("8_sicca")]
+transform = Transform3D(-0.578769, 0, 0.815492, 0, 1, 0, -0.815492, 0, -0.578769, -180.879, 10.0744, -26.5648)
+
+[node name="CheckPoint4" parent="Checkpoints" instance=ExtResource("8_sicca")]
+transform = Transform3D(-0.758351, 0, 0.651847, 0, 1, 0, -0.651847, 0, -0.758351, -113.485, 10.0744, 76.579)
+
+[editable path="Player"]
+[editable path="CameraBase"]
+[editable path="leveli"]

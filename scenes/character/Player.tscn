@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfgagtwky5v2i"]
+
+[ext_resource type="Script" path="res://scenes/character/Player.gd" id="1_jhwuj"]
+[ext_resource type="Script" path="res://scenes/character/StateMachine.gd" id="2_xb0xx"]
+[ext_resource type="Script" path="res://scenes/character/states/Drive.gd" id="3_23xia"]
+[ext_resource type="Script" path="res://scenes/character/states/Jump.gd" id="6_vu7pa"]
+[ext_resource type="Script" path="res://scenes/character/states/Empty.gd" id="7_2d3dr"]
+[ext_resource type="Script" path="res://scenes/character/states/Fall.gd" id="7_uttpu"]
+[ext_resource type="Script" path="res://scenes/character/states/Drift.gd" id="8_8ul58"]
+[ext_resource type="PackedScene" uid="uid://dvuua51rxk3nm" path="res://imports/cart.glb" id="8_i8wug"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o58mg"]
+size = Vector3(1.37425, 0.5, 0.906421)
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.448395)
+floor_stop_on_slope = false
+script = ExtResource("1_jhwuj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00343227, 0.253432, 0)
+shape = SubResource("BoxShape3D_o58mg")
+
+[node name="CameraTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484427, 0.330802)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_xb0xx")
+
+[node name="Drive" type="Node" parent="StateMachine"]
+script = ExtResource("3_23xia")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("6_vu7pa")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("7_uttpu")
+
+[node name="Drift" type="Node" parent="StateMachine"]
+script = ExtResource("8_8ul58")
+
+[node name="Empty" type="Node" parent="StateMachine"]
+script = ExtResource("7_2d3dr")
+
+[node name="cart" parent="." instance=ExtResource("8_i8wug")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.233402, 0)

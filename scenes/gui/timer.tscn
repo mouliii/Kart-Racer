@@ -1,0 +1,107 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsp7re6t5ufqn"]
+
+[ext_resource type="Script" path="res://scenes/gui/timer.gd" id="1_wtgq8"]
+[ext_resource type="Texture2D" uid="uid://dp574sgtg7d1e" path="res://textures/dev_time.PNG" id="2_m5fnc"]
+
+[node name="Timer" type="Control"]
+anchor_left = 0.767
+anchor_top = 0.05
+anchor_right = 0.966
+anchor_bottom = 0.446
+offset_left = -0.40802
+offset_right = -0.184021
+offset_bottom = -76.2
+script = ExtResource("1_wtgq8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer"]
+offset_right = 204.0
+offset_bottom = 26.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer1"]
+offset_right = 42.0
+offset_bottom = 26.0
+text = "lap 1 "
+
+[node name="Lap" type="Label" parent="VBoxContainer/HBoxContainer1"]
+offset_left = 46.0
+offset_right = 110.0
+offset_bottom = 26.0
+text = "00.00.00"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+offset_top = 30.0
+offset_right = 204.0
+offset_bottom = 56.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+offset_right = 42.0
+offset_bottom = 26.0
+text = "lap 2 "
+
+[node name="Lap" type="Label" parent="VBoxContainer/HBoxContainer2"]
+offset_left = 46.0
+offset_right = 110.0
+offset_bottom = 26.0
+text = "00.00.00"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+offset_top = 60.0
+offset_right = 204.0
+offset_bottom = 86.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+offset_right = 42.0
+offset_bottom = 26.0
+text = "lap 3 "
+
+[node name="Lap" type="Label" parent="VBoxContainer/HBoxContainer3"]
+offset_left = 46.0
+offset_right = 110.0
+offset_bottom = 26.0
+text = "00.00.00"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+offset_top = 90.0
+offset_right = 204.0
+offset_bottom = 364.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4"]
+offset_right = 191.0
+offset_bottom = 274.0
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer"]
+offset_right = 191.0
+offset_bottom = 23.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer"]
+offset_top = 27.0
+offset_right = 191.0
+offset_bottom = 53.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/HBoxContainer"]
+offset_right = 37.0
+offset_bottom = 26.0
+text = "total"
+
+[node name="Lap" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/HBoxContainer"]
+offset_left = 41.0
+offset_right = 105.0
+offset_bottom = 26.0
+text = "00.00.00"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer"]
+offset_top = 57.0
+offset_right = 191.0
+offset_bottom = 83.0
+text = "Dev time"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer4/VBoxContainer"]
+offset_top = 87.0
+offset_right = 191.0
+offset_bottom = 274.0
+texture = ExtResource("2_m5fnc")

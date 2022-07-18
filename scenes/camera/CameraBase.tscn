@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxugxnhw14adw"]
+
+[ext_resource type="Script" path="res://scenes/camera/CameraBase.gd" id="1_5njui"]
+
+[node name="CameraBase" type="Node3D"]
+script = ExtResource("1_5njui")
+
+[node name="CameraPivot" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+current = true
+fov = 90.0
